@@ -15,6 +15,7 @@ int main(int argc, char **argv)
     a = malloc(32);
     b = malloc(32);
     c = malloc(32);
+
     // save copy
     strncpy(a, argv[1], 31);
     strncpy(b, argv[2], 31);
@@ -25,9 +26,23 @@ int main(int argc, char **argv)
     b[31] = '\0';
     c[31] = '\0';
 
+    // cleanup c 
+    memset(c, 0, sizeof(c));
     free(c);
+    // reset c pointer
+    c = NULL;
+
+    // cleanup b
+    memset(b, 0, sizeof(b));
     free(b);
+    // reset b pointer
+    b = NULL;
+
+    // cleanup a
+    memset(a, 0, sizeof(a));
     free(a);
+    // reset a pointer
+    a = NULL;
 
     printf("dynamite failed?\n");
 }

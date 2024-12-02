@@ -27,7 +27,12 @@ int main(int argc, char **argv)
         }
 
         if(strncmp(line, "reset", 5) == 0) {
+            // vynulovat auth strukturu
+            memset(auth, 0, sizeof(auth));
+            
             free(auth);
+            // reset auth pointer
+            auth = NULL; 
         }
 
         if(strncmp(line, "service", 6) == 0) {
